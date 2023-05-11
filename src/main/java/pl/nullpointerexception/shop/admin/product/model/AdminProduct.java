@@ -1,7 +1,10 @@
 package pl.nullpointerexception.shop.admin.product.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -9,6 +12,9 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "PRODUCTS")
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AdminProduct {
 
     @Id
