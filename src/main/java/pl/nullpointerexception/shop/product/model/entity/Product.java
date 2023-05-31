@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.nullpointerexception.shop.review.model.Review;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,4 +28,7 @@ public class Product {
     private String currency;
     private String image;
     private String slug;
+    @OneToMany
+    @JoinColumn(name = "productId")
+    List<Review> reviews;
 }
