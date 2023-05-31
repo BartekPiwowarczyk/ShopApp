@@ -1,4 +1,4 @@
-package pl.nullpointerexception.shop.product.model;
+package pl.nullpointerexception.shop.product.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
     private String name;
-//    private String category;
+    private Long categoryId;
     private String description;
     private String fullDescription;
     private BigDecimal price;
