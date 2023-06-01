@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.nullpointerexception.shop.category.model.Category;
 import pl.nullpointerexception.shop.category.service.CategoryService;
-import pl.nullpointerexception.shop.product.model.dto.CategoryProductsDto;
+import pl.nullpointerexception.shop.category.controller.dto.CategoryProductsDto;
 
 import javax.validation.constraints.Pattern;
 import java.util.List;
