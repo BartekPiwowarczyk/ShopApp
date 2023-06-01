@@ -5,7 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.safety.Safelist;
 import org.springframework.web.bind.annotation.*;
 import pl.nullpointerexception.shop.review.controller.dto.ReviewDto;
-import pl.nullpointerexception.shop.review.model.Review;
+import pl.nullpointerexception.shop.common.model.Review;
 import pl.nullpointerexception.shop.review.service.ReviewService;
 
 import javax.validation.Valid;

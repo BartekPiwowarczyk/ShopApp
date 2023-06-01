@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.nullpointerexception.shop.category.model.Category;
+import pl.nullpointerexception.shop.common.model.Category;
 import pl.nullpointerexception.shop.category.service.CategoryService;
 import pl.nullpointerexception.shop.category.controller.dto.CategoryProductsDto;
 

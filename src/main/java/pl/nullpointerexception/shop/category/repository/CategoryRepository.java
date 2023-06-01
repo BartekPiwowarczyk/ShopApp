@@ -1,8 +1,7 @@
 package pl.nullpointerexception.shop.category.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import pl.nullpointerexception.shop.category.model.Category;
+import pl.nullpointerexception.shop.common.model.Category;
 
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 //    @Query("SELECT c FROM Category c left join fetch c.products WHERE c.slug=:slug")

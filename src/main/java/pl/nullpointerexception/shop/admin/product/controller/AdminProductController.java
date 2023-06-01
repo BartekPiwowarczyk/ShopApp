@@ -26,6 +26,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Locale;
 
+import static pl.nullpointerexception.shop.admin.common.utils.SlugifyUtils.slugifySlug;
+
 @RestController
 @RequiredArgsConstructor
 public class AdminProductController {
@@ -91,9 +93,5 @@ public class AdminProductController {
                 .build();
     }
 
-    private String slugifySlug(String slug) {
-        Slugify slugify = new Slugify();
-        return slugify.withCustomReplacement("_","-")
-                .slugify(slug);
-    }
+
 }

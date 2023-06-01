@@ -6,12 +6,12 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.nullpointerexception.shop.category.model.Category;
+import pl.nullpointerexception.shop.common.model.Category;
 import pl.nullpointerexception.shop.category.repository.CategoryRepository;
 import pl.nullpointerexception.shop.category.controller.dto.CategoryProductsDto;
-import pl.nullpointerexception.shop.product.model.dto.ProductListDto;
-import pl.nullpointerexception.shop.product.model.entity.Product;
-import pl.nullpointerexception.shop.product.repository.ProductRepository;
+import pl.nullpointerexception.shop.common.dto.ProductListDto;
+import pl.nullpointerexception.shop.common.model.Product;
+import pl.nullpointerexception.shop.common.repository.ProductRepository;
 
 import java.util.List;
 

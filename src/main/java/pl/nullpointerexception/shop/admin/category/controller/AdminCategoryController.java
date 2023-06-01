@@ -9,6 +9,8 @@ import pl.nullpointerexception.shop.admin.category.service.AdminCategoryService;
 
 import java.util.List;
 
+import static pl.nullpointerexception.shop.admin.common.utils.SlugifyUtils.slugifySlug;
+
 @RestController
 @RequestMapping("/admin/categories")
 @RequiredArgsConstructor
@@ -47,13 +49,9 @@ public class AdminCategoryController {
                 .categoryId(id)
                 .description(adminCategoryDto.getDescription())
                 .name(adminCategoryDto.getName())
-                .slug(slugifyCategoryName(adminCategoryDto.getSlug()))
+                .slug(slugifySlug(adminCategoryDto.getSlug()))
                 .build();
     }
 
-    private String slugifyCategoryName(String slug) {
-        Slugify slugify = new Slugify();
-        return slugify.withCustomReplacement("_","-")
-                .slugify(slug);
-    }
+
 }
