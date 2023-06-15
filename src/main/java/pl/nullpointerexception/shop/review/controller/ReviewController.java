@@ -17,11 +17,6 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-    @GetMapping
-    public List<Review> getReviewsForProduct() {
-        return null;
-    }
-
     @PostMapping("/reviews")
     public Review addReview(@RequestBody @Valid ReviewDto reviewDto){
         return reviewService.addReview(mapToReview(reviewDto));
@@ -32,6 +27,7 @@ public class ReviewController {
                 .authorName(cleanContent(reviewDto.authorName()))
                 .content(cleanContent(reviewDto.content()))
                 .productId(reviewDto.productId())
+                .moderated(false)
                 .build();
     }
 

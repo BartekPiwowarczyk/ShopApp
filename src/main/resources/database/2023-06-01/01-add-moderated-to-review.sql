@@ -1,0 +1,3 @@
+--liquibase formatted sql
+--changeset bpiw:9
+ALTER TABLE REVIEWS ADD MODERATED BOOLEAN DEFAULT FALSE AFTER CONTENT;

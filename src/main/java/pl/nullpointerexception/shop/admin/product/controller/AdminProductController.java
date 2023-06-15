@@ -53,8 +53,7 @@ public class AdminProductController {
 
     @PutMapping("/admin/products/{id}")
     public AdminProduct updateProduct(@RequestBody @Valid AdminProductDto adminProductDto, @PathVariable Long id) {
-        return productService.updateProduct(mapAdminProduct(adminProductDto, id)
-        );
+        return productService.updateProduct(mapAdminProduct(adminProductDto, id));
     }
 
     @DeleteMapping("/admin/products/{id}")
@@ -68,7 +67,7 @@ public class AdminProductController {
             String savedFileName = productImageService.uploadImage(multipartFile.getOriginalFilename(), inputStream);
             return new UploadResponse(savedFileName);
         } catch (IOException e) {
-            throw new RuntimeException("Coś poszło nie tak podczas wgywania pliku", e);
+            throw new RuntimeException("Coś poszło nie tak podczas wgrywania pliku", e);
         }
     }
 

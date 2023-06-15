@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.nullpointerexception.shop.common.dto.ProductListDto;
 import pl.nullpointerexception.shop.common.model.Product;
 import pl.nullpointerexception.shop.product.service.ProductService;
+import pl.nullpointerexception.shop.product.service.dto.ProductDto;
 
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -41,7 +42,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{slug}")
-    public Product getProduct(@PathVariable
+    public ProductDto getProduct(@PathVariable
                                   @Pattern(regexp = "[a-z0-9\\-]+")
                                   @Length(max=255)
                                   String slug) {

@@ -21,5 +21,6 @@ public class Review {
     private String authorName;
     private String content;
     private Long productId;
+    private boolean moderated;
 
 }
