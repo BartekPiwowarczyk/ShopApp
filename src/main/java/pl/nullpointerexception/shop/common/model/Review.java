@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Reviews")
+@Table(name = "REVIEW")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -17,7 +17,7 @@ public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long reviewId;
+    private Long id;
     private String authorName;
     private String content;
     private Long productId;

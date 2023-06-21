@@ -1,6 +1,7 @@
 package pl.nullpointerexception.shop.common.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.nullpointerexception.shop.common.model.Review;
@@ -13,12 +14,13 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="PRODUCTS")
+@Builder
+@Table(name="PRODUCT")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long id;
     private String name;
     private Long categoryId;
     private String description;

@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "PRODUCTS")
+@Table(name = "PRODUCT")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -19,7 +19,7 @@ public class AdminProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long id;
     private String name;
     private Long categoryId;
     private String description;

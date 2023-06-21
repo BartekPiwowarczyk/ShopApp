@@ -27,13 +27,13 @@ public class ProductService {
     @Transactional(readOnly = true)
     public ProductDto getProductBySlug(String slug) {
         Product product = productRepository.findBySlug(slug).orElseThrow();
-        List<Review> reviews = reviewRepository.findAllByProductIdAndModerated(product.getProductId(), true);
+        List<Review> reviews = reviewRepository.findAllByProductIdAndModerated(product.getId(), true);
         return mapToProductDto(product,reviews);
     }
 
     private ProductDto mapToProductDto(Product product, List<Review> reviews) {
         return ProductDto.builder()
-                .id(product.getProductId())
+                .id(product.getId())
                 .name(product.getName())
                 .categoryId(product.getCategoryId())
                 .description(product.getDescription())
@@ -44,6 +44,8 @@ public class ProductService {
                 .slug(product.getSlug())
                 .reviews(reviews.stream()
                         .map(review -> ReviewDto.builder()
+                                .id(review.getId())
+                                .productId(review.getProductId())
                                 .authorName(review.getAuthorName())
                                 .content(review.getContent())
                                 .moderate(review.isModerated())

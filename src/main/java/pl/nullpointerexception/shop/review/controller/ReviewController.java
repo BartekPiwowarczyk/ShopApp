@@ -27,7 +27,6 @@ public class ReviewController {
                 .authorName(cleanContent(reviewDto.authorName()))
                 .content(cleanContent(reviewDto.content()))
                 .productId(reviewDto.productId())
-                .moderated(false)
                 .build();
     }
 

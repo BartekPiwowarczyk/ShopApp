@@ -29,10 +29,10 @@ public class CategoryService {
     @Transactional(readOnly = true)
     public CategoryProductsDto getCategoriesWithProducts(String slug, Pageable pageable) {
         Category category = categoryRepository.findBySlug(slug);
-        Page<Product> page = productRepository.findByCategoryId(category.getCategoryId(),pageable);
+        Page<Product> page = productRepository.findByCategoryId(category.getId(),pageable);
         List<ProductListDto> productListDtos = page.getContent().stream()
                 .map(product -> ProductListDto.builder()
-                        .productId(product.getProductId())
+                        .id(product.getId())
                         .name(product.getName())
                         .description(product.getDescription())
                         .image(product.getImage())

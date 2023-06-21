@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name="CATEGORIES")
+@Table(name="CATEGORY")
 @Getter
 @Builder
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    private Long id;
     private String name;
     private String description;
     private String slug;

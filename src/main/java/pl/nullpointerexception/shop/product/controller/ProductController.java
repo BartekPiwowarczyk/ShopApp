@@ -30,7 +30,7 @@ public class ProductController {
         Page<Product> products = productService.getProducts(pageable);
         List<ProductListDto> productListDtos = products.getContent().stream()
                 .map(product -> ProductListDto.builder()
-                        .productId(product.getProductId())
+                        .id(product.getId())
                         .name(product.getName())
                         .description(product.getDescription())
                         .image(product.getImage())

@@ -80,7 +80,7 @@ public class AdminProductController {
     }
     private AdminProduct mapAdminProduct(AdminProductDto adminProductDto, Long id) {
         return AdminProduct.builder()
-                .productId(id)
+                .id(id)
                 .name(adminProductDto.getName())
                 .description(adminProductDto.getDescription())
                 .fullDescription(adminProductDto.getFullDescription())

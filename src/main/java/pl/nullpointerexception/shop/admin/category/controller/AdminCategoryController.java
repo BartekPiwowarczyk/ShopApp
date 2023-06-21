@@ -46,7 +46,7 @@ public class AdminCategoryController {
 
     private AdminCategory mapToAdminCategory(Long id, AdminCategoryDto adminCategoryDto) {
         return AdminCategory.builder()
-                .categoryId(id)
+                .id(id)
                 .description(adminCategoryDto.getDescription())
                 .name(adminCategoryDto.getName())
                 .slug(slugifySlug(adminCategoryDto.getSlug()))
