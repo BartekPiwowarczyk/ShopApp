@@ -1,6 +1,5 @@
 package pl.nullpointerexception.shop.cart.repository;
 
-import liquibase.pro.packaged.Q;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,4 +14,8 @@ public interface CartRepository extends JpaRepository<Cart,Long> {
     @Query("DELETE FROM Cart c WHERE c.id=:id")
     @Modifying
     void deleteCartById(Long id);
+
+    @Query("DELETE FROM Cart c WHERE c.id IN (:ids)")
+    @Modifying
+    void deleteAllByIdIn(List<Long> ids);
 }
