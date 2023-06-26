@@ -14,4 +14,8 @@ public class CartItemService {
         cartItemRepository.deleteById(id);
     }
 
+    public Long countItemInCart(Long cartId) {
+        System.out.println("cos");
+        return cartItemRepository.countByCartId(cartId);
+    }
 }
