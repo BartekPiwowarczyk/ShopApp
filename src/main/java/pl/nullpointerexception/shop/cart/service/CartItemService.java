@@ -2,7 +2,7 @@ package pl.nullpointerexception.shop.cart.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.nullpointerexception.shop.cart.repository.CartItemRepository;
+import pl.nullpointerexception.shop.common.repository.CartItemRepository;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +15,6 @@ public class CartItemService {
     }
 
     public Long countItemInCart(Long cartId) {
-        System.out.println("cos");
         return cartItemRepository.countByCartId(cartId);
     }
 }

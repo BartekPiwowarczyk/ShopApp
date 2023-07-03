@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.nullpointerexception.shop.cart.controller.dto.CartSummaryDto;
 import pl.nullpointerexception.shop.cart.controller.mapper.CartMapper;
-import pl.nullpointerexception.shop.cart.model.Cart;
 import pl.nullpointerexception.shop.cart.model.dto.CartProductDto;
 import pl.nullpointerexception.shop.cart.service.CartService;
 

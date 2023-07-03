@@ -1,10 +1,9 @@
-package pl.nullpointerexception.shop.cart.model;
+package pl.nullpointerexception.shop.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.nullpointerexception.shop.common.model.Product;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

@@ -3,10 +3,10 @@ package pl.nullpointerexception.shop.cart.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.nullpointerexception.shop.cart.model.Cart;
-import pl.nullpointerexception.shop.cart.model.CartItem;
+import pl.nullpointerexception.shop.common.model.Cart;
+import pl.nullpointerexception.shop.common.model.CartItem;
 import pl.nullpointerexception.shop.cart.model.dto.CartProductDto;
-import pl.nullpointerexception.shop.cart.repository.CartRepository;
+import pl.nullpointerexception.shop.common.repository.CartRepository;
 import pl.nullpointerexception.shop.common.model.Product;
 import pl.nullpointerexception.shop.common.repository.ProductRepository;
 
