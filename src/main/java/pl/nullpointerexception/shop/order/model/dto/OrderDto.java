@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 public class OrderDto {
@@ -22,7 +23,9 @@ public class OrderDto {
     private String email;
     @NotBlank
     private String phone;
-    @NotBlank
+    @NotNull
     private Long cartId;
+    @NotNull
+    private Long shipmentId;
 
 }
