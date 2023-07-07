@@ -3,6 +3,7 @@ package pl.nullpointerexception.shop.order.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.nullpointerexception.shop.common.mail.EmailClientService;
 import pl.nullpointerexception.shop.common.mail.EmailSender;
 import pl.nullpointerexception.shop.common.model.Cart;
 import pl.nullpointerexception.shop.common.model.CartItem;
@@ -35,7 +36,7 @@ public class OrderService {
     private final CartItemRepository cartItemRepository;
     private final ShipmentRepository shipmentRepository;
     private final PaymentRepository paymentRepository;
-    private final EmailSender emailSender;
+    private final EmailClientService emailClientService;
 
     @Transactional
     public OrderSummary placeOrder(OrderDto orderDto) {
@@ -61,7 +62,7 @@ public class OrderService {
     cartItemRepository.deleteByCartId(orderDto.getCartId());
     cartRepository.deleteCartById(orderDto.getCartId());
 
-    emailSender.send(order.getEmail(),"Twoje zamwienie zostało przyjęte", createEmailMessage(order));
+    emailClientService.getInstance().send(order.getEmail(),"Twoje zamwienie zostało przyjęte", createEmailMessage(order));
 
     return OrderSummary.builder()
             .id(newOrder.getId())
