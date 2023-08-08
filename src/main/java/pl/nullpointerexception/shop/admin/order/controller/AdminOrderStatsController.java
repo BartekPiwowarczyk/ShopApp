@@ -18,4 +18,6 @@ public class AdminOrderStatsController {
     public AdminOrderStats getOrderStatistics() {
         return adminOrderStatsService.getStatistics();
     }
+
+
 }
