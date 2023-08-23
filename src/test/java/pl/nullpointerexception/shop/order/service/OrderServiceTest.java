@@ -12,7 +12,6 @@ import pl.nullpointerexception.shop.common.model.CartItem;
 import pl.nullpointerexception.shop.common.model.Product;
 import pl.nullpointerexception.shop.common.repository.CartItemRepository;
 import pl.nullpointerexception.shop.common.repository.CartRepository;
-import pl.nullpointerexception.shop.order.model.Order;
 import pl.nullpointerexception.shop.order.model.OrderStatus;
 import pl.nullpointerexception.shop.order.model.Payment;
 import pl.nullpointerexception.shop.order.model.PaymentType;
@@ -30,7 +29,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -63,8 +61,9 @@ class OrderServiceTest {
         when(paymentRepository.findById(any())).thenReturn(createPayment());
         when(orderRepository.save(any())).thenAnswer(invocation -> invocation.getArguments()[0]);
         when(emailSender.getInstance()).thenReturn(new FakeEmailService());
+        Long userId = 1L;
 
-        OrderSummary orderSummary = orderService.placeOrder(orderDto);
+        OrderSummary orderSummary = orderService.placeOrder(orderDto, userId);
 
         assertThat(orderSummary).isNotNull();
         assertThat(orderSummary.getStatus()).isEqualTo(OrderStatus.NEW);

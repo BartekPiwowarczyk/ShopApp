@@ -70,7 +70,7 @@ public class LoginController {
     private Token authenticate(String username, String password) {
         User user = userRepository.findByUsername(username).orElseThrow();
         Authentication authenticate = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(username, password)
+                new UsernamePasswordAuthenticationToken(user.getId(), password)
         );
         ShopUserDetails principal = (ShopUserDetails) authenticate.getPrincipal();
         String token = JWT.create()
