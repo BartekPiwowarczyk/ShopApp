@@ -1,9 +1,7 @@
-package pl.nullpointerexception.shop.admin.order.model;
+package pl.nullpointerexception.shop.common.model;
 
-import lombok.Getter;
 
-@Getter
-public enum AdminOrderStatus {
+public enum OrderStatus {
     NEW("Nowe"),
     PAID("Opłacone"),
     PROCESSING("Przetwarzane"),
@@ -14,7 +12,12 @@ public enum AdminOrderStatus {
 
     private String value;
 
-    AdminOrderStatus(String value) {
+    OrderStatus(String value) {
         this.value = value;
     }
+
+    public String getValue() {
+        return value;
+    }
+
 }
