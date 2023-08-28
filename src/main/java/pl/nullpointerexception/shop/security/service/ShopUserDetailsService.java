@@ -1,4 +1,4 @@
-package pl.nullpointerexception.shop.security;
+package pl.nullpointerexception.shop.security.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
