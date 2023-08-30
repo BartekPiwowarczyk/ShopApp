@@ -1,0 +1,3 @@
+--liquibase formatted sql
+--changeset bpiw:4
+ALTER TABLE PRODUCT ADD FULL_DESCRIPTION TEXT DEFAULT NULL AFTER DESCRIPTION;
