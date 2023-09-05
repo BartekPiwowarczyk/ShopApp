@@ -1,24 +1,24 @@
 --liquibase formatted sql
 --changeset bpiw:11
-CREATE TABLE `ORDER`(
-                        ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                        PLACE_DATE DATETIME NOT NULL,
-                        ORDER_STATUS VARCHAR(32) NOT NULL,
-                        GROSS_VALUE DECIMAL(6,2) NOT NULL,
-                        FIRSTNAME VARCHAR(64) NOT NULL,
-                        LASTNAME VARCHAR(64) NOT NULL,
-                        STREET VARCHAR(64) NOT NULL,
-                        ZIPCODE VARCHAR(6) NOT NULL,
-                        CITY VARCHAR(64) NOT NULL,
-                        EMAIL VARCHAR(64) NOT NULL,
-                        PHONE VARCHAR(64) NOT NULL
+create table `order`(
+                        id bigint not null auto_increment primary key,
+                        place_date datetime not null,
+                        order_status varchar(32) not null,
+                        gross_value decimal(6,2) not null,
+                        firstname varchar(64) not null,
+                        lastname varchar(64) not null,
+                        street varchar(64) not null,
+                        zipcode varchar(6) not null,
+                        city varchar(64) not null,
+                        email varchar(64) not null,
+                        phone varchar(64) not null
 );
-CREATE TABLE ORDER_ROW(
-                          ID BIGINT NOT NULL auto_increment PRIMARY KEY,
-                          ORDER_ID BIGINT NOT NULL,
-                          PRODUCT_ID BIGINT NOT NULL,
-                          QUANTITY INT NOT NULL,
-                          PRICE DECIMAL(6,2) NOT NULL,
-                          CONSTRAINT FK_ORDER_ROW_ORDER_ID FOREIGN KEY (ORDER_ID) REFERENCES `ORDER`(ID),
-                          CONSTRAINT FK_ORDER_ROW_PRODUCT_ID FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(ID)
+create table order_row(
+                          id bigint not null auto_increment primary key,
+                          order_id bigint not null,
+                          product_id bigint not null,
+                          quantity int not null,
+                          price decimal(6,2) not null,
+                          constraint fk_order_row_order_id foreign key (order_id) references `order`(id),
+                          constraint fk_order_row_product_id foreign key (product_id) references product(id)
 );

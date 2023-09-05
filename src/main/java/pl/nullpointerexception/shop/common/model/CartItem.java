@@ -6,7 +6,6 @@ import pl.nullpointerexception.shop.common.model.Product;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CART_ITEM")
 @Getter
 @Setter
 @Builder

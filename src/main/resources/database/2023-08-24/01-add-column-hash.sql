@@ -1,5 +1,5 @@
 --liquibase formatted sql
 --changeset bpiw:23
-ALTER TABLE USERS ADD HASH VARCHAR(120);
+alter table users add hash varchar(120);
 --changeset bpiw:24
-ALTER TABLE USERS ADD HASH_DATE datetime;
+alter table users add hash_date datetime;

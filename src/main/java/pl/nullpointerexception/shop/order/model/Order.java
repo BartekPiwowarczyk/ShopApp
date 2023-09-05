@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name="`ORDER`")
+@Table(name="`order`")
 @Getter
 @Builder
 @AllArgsConstructor

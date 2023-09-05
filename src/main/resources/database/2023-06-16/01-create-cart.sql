@@ -1,15 +1,15 @@
 --liquibase formatted sql
 --changeset bpiw:10
-CREATE TABLE CART (
-  ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  CREATED DATETIME NOT NULL
+create table cart (
+  id bigint not null auto_increment primary key,
+  created datetime not null
 );
 
-CREATE TABLE CART_ITEM(
-    ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    PRODUCT_ID BIGINT NOT NULL,
-    QUANTITY INT,
-    CART_ID BIGINT NOT NULL,
-    CONSTRAINT FK_CART_ITEM_PRODUCTS FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCT(ID),
-    CONSTRAINT FK_CART_ITEM_CART_ID FOREIGN KEY (CART_ID) REFERENCES CART(ID)
+create table cart_item(
+    id bigint not null auto_increment primary key,
+    product_id bigint not null,
+    quantity int,
+    cart_id bigint not null,
+    constraint fk_cart_item_products foreign key (product_id) references product(id),
+    constraint fk_cart_item_cart_id foreign key (cart_id) references cart(id)
 );

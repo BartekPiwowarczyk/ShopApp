@@ -1,5 +1,5 @@
 --liquibase formatted sql
 --changeset bpiw:15
-ALTER TABLE `ORDER` ADD PAYMENT_ID BIGINT;
-UPDATE `ORDER` SET PAYMENT_ID=1;
-ALTER TABLE `ORDER` MODIFY PAYMENT_ID BIGINT NOT NULL;
+alter table `order` add payment_id bigint;
+update `order` set payment_id=1;
+alter table `order` modify payment_id bigint not null;

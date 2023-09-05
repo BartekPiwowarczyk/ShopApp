@@ -14,7 +14,6 @@ import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ORDER_ROW")
 @Getter
 @Builder
 @NoArgsConstructor

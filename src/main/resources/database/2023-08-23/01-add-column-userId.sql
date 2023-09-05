@@ -1,5 +1,5 @@
 --liquibase formatted sql
 --changeset bpiw:21
-ALTER TABLE `ORDER` ADD USER_ID BIGINT;
+alter table `order` add user_id bigint;
 --changeset bpiw:22
-ALTER TABLE `ORDER` ADD CONSTRAINT FK_ORDER_USER_ID FOREIGN KEY (USER_ID) REFERENCES USERS(ID);
+alter table `order` add constraint fk_order_user_id foreign key (user_id) references users(id);

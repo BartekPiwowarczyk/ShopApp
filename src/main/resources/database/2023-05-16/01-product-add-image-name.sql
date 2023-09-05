@@ -1,4 +1,4 @@
 --liquibase formatted sql
 --changeset bpiw:2
 
-ALTER TABLE PRODUCT ADD IMAGE VARCHAR(128) AFTER CURRENCY;
+alter table product add image varchar(128) after currency;

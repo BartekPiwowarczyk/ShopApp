@@ -1,5 +1,5 @@
 --liquibase formatted sql
 --changeset bpiw:6
-ALTER TABLE PRODUCT ADD CATEGORY_ID BIGINT AFTER CATEGORY;
-ALTER TABLE PRODUCT DROP COLUMN CATEGORY;
-ALTER TABLE PRODUCT ADD CONSTRAINT FK_PRODUCT_CATEGORY_ID FOREIGN KEY (CATEGORY_ID) REFERENCES CATEGORY(ID);
+alter table product add category_id bigint after category;
+alter table product drop column category;
+alter table product add constraint fk_product_category_id foreign key (category_id) references category(id);

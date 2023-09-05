@@ -1,5 +1,5 @@
 --liquibase formatted sql
 --changeset bpiw:3
 
-ALTER TABLE PRODUCT ADD SLUG VARCHAR(255) AFTER IMAGE;
-ALTER TABLE PRODUCT ADD CONSTRAINT UI_PRODUCT_SLUG UNIQUE KEY(SLUG);
+alter table product add slug varchar(255) after image;
+alter table product add constraint ui_product_slug unique key(slug);

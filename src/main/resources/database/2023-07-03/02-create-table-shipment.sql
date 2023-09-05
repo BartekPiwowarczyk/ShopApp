@@ -1,12 +1,12 @@
 --liquibase formatted sql
 --changeset bpiw:12
-CREATE TABLE SHIPMENT(
-    ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    NAME VARCHAR(64) NOT NULL,
-    PRICE DECIMAL(6,2) NOT NULL,
-    TYPE VARCHAR(32) NOT NULL,
-    DEFAULT_SHIPMENT BOOLEAN DEFAULT FALSE
+create table shipment(
+    id bigint not null auto_increment primary key,
+    name varchar(64) not null,
+    price decimal(6,2) not null,
+    type varchar(32) not null,
+    default_shipment boolean default false
 );
 
-INSERT INTO SHIPMENT(NAME, PRICE, TYPE, DEFAULT_SHIPMENT) VALUES ('Kurier', 14.99, 'DELIVERYMAN',true);
-INSERT INTO SHIPMENT(NAME, PRICE, TYPE, DEFAULT_SHIPMENT) VALUES ('Odbiór osobisty', 0.0, 'SELFPICKUP',false);
+insert into shipment(name, price, type, default_shipment) values ('kurier', 14.99, 'deliveryman',true);
+insert into shipment(name, price, type, default_shipment) values ('Odbiór osobisty', 0.0, 'SELFPICKUP',false);

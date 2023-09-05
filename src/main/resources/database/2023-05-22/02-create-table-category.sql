@@ -1,8 +1,8 @@
 --liquibase formatted sql
 --changeset bpiw:5
-CREATE TABLE CATEGORY (
-    ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    NAME VARCHAR(255) NOT NULL,
-    DESCRIPTION TEXT,
-    SLUG VARCHAR(255) NOT NULL
+create table category (
+    id bigint not null auto_increment primary key,
+    name varchar(255) not null,
+    description text,
+    slug varchar(255) not null
 );

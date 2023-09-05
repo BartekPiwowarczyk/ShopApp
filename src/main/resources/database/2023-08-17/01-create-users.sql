@@ -1,16 +1,16 @@
 --liquibase formatted sql
 --changeset bpiw:17
-CREATE TABLE USERS(
-                      ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                      USERNAME VARCHAR(50) NOT NULL UNIQUE,
-                      PASSWORD VARCHAR(500) NOT NULL,
-                      ENABLED BOOLEAN NOT NULL
+create table users(
+                      id bigint not null auto_increment primary key,
+                      username varchar(50) not null unique,
+                      password varchar(500) not null,
+                      enabled boolean not null
 );
 --changeset bpiw:18
-CREATE TABLE AUTHORITIES (
-                             USERNAME VARCHAR(50) NOT NULL,
-                             AUTHORITY VARCHAR(50) NOT NULL,
-                             CONSTRAINT FK_AUTHORITIES_USERS FOREIGN KEY(USERNAME) REFERENCES USERS(USERNAME)
+create table authorities (
+                             username varchar(50) not null,
+                             authority varchar(50) not null,
+                             constraint fk_authorities_users foreign key(username) references users(username)
 );
 --changeset bpiw:19
-CREATE UNIQUE INDEX IX_AUTH_USERNAME ON AUTHORITIES (USERNAME,AUTHORITY);
+create unique index ix_auth_username on authorities (username,authority);
