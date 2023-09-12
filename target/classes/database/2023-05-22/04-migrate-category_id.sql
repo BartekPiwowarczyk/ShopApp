@@ -1,5 +1,5 @@
 --liquibase formatted sql
 --changeset bpiw:7
-INSERT INTO CATEGORY (ID,NAME,DESCRIPTION,SLUG) VALUES (1,'inne','','inne');
-UPDATE PRODUCT SET CATEGORY_ID=1;
-ALTER TABLE PRODUCT MODIFY CATEGORY_ID BIGINT NOT NULL;
+insert into category (id,name,description,slug) values (1,'inne','','inne');
+update product set category_id=1;
+alter table product modify category_id bigint not null;

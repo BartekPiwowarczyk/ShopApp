@@ -1,5 +1,5 @@
 --liquibase formatted sql
 --changeset bpiw:13
-ALTER TABLE ORDER_ROW MODIFY PRODUCT_ID BIGINT;
-ALTER TABLE ORDER_ROW ADD SHIPMENT_ID BIGINT;
-ALTER TABLE ORDER_ROW ADD CONSTRAINT FK_ORDER_ROW_SHIPMENT_ID FOREIGN KEY (SHIPMENT_ID) REFERENCES SHIPMENT(ID);
+alter table order_row modify product_id bigint;
+alter table order_row add shipment_id bigint;
+alter table order_row add constraint fk_order_row_shipment_id foreign key (shipment_id) references shipment(id);

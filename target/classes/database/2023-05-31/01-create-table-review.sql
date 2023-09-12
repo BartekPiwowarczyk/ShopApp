@@ -1,8 +1,8 @@
 --liquibase formatted sql
 --changeset bpiw:8
-CREATE TABLE REVIEW(
-    ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    PRODUCT_ID BIGINT NOT NULL,
-    AUTHOR_NAME VARCHAR(60) NOT NULL,
-    CONTENT TEXT
+create table review(
+    id bigint not null auto_increment primary key,
+    product_id bigint not null,
+    author_name varchar(60) not null,
+    content text
 );

@@ -1,12 +1,12 @@
 --liquibase formatted sql
 --changeset bpiw:1
 
-CREATE TABLE PRODUCT(
-    ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    NAME VARCHAR(255) NOT NULL,
-    CATEGORY VARCHAR(255) NOT NULL,
-    DESCRIPTION TEXT NOT NULL,
-    PRICE DECIMAL(9,2) NOT NULL,
-    CURRENCY VARCHAR(3) NOT NULL
+create table product(
+    id bigint not null auto_increment primary key,
+    name varchar(255) not null,
+    category varchar(255) not null,
+    description text not null,
+    price decimal(9,2) not null,
+    currency varchar(3) not null
 );
 

@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "order_log")
 @Getter
 @Builder
 @NoArgsConstructor

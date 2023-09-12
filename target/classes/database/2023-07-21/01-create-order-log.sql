@@ -1,8 +1,8 @@
 --liquibase formatted sql
 --changeset bpiw:16
-CREATE TABLE ORDER_LOG(
-    ID BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ORDER_ID BIGINT NOT NULL,
-    CREATED DATETIME NOT NULL,
-    NOTE TEXT
+create table order_log(
+    id bigint not null auto_increment primary key,
+    order_id bigint not null,
+    created datetime not null,
+    note text
 );

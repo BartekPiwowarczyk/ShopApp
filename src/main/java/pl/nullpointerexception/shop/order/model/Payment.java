@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@Table(name="payment")
 @Getter
 @Builder
 @NoArgsConstructor
