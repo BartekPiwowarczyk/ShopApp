@@ -21,7 +21,6 @@ import pl.nullpointerexception.shop.security.model.UserRole;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableWebSecurity(debug = true)
 public class SecurityConfig {
 
     private String secret;
