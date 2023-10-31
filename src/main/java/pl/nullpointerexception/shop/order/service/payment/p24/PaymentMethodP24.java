@@ -84,8 +84,8 @@ public class PaymentMethodP24 {
         return "order_id_" + newOrder.getId().toString();
     }
 
-    public String receiveNotification(NotificationReceiveDto receiveDto, Order order) {
-        log.info(receiveDto.toString());
+    public String receiveNotification(Order order, NotificationReceiveDto receiveDto) {
+        log.info("Receive Dto: " + receiveDto.toString());
         validate(receiveDto,order);
         return verifyPayment(receiveDto,order);
     }
@@ -117,8 +117,7 @@ public class PaymentMethodP24 {
         String json = "{\"sessionId\":\"" + createSessionId(order) +
                 "\",\"orderId\":" + receiveDto.getOrderId() +
                 ",\"amount\":" + order.getGrossValue().movePointRight(2).intValue() +
-                ",\"currency\":\"PLN\"" +
-                ",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
+                ",\"currency\":\"PLN\",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
         return DigestUtils.sha384Hex(json);
     }
 

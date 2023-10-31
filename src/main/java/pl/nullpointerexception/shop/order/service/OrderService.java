@@ -2,10 +2,8 @@ package pl.nullpointerexception.shop.order.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
 import pl.nullpointerexception.shop.common.mail.EmailClientService;
 import pl.nullpointerexception.shop.common.model.Cart;
 import pl.nullpointerexception.shop.common.model.OrderStatus;
@@ -55,7 +53,6 @@ public class OrderService {
         clearOrderCart(orderDto);
         sendConfirmEmail(newOrder);
         String redirectUrl = initPaymentIfNeeded(newOrder);
-        log.info("redirectUrl: " + redirectUrl);
         return createOrderSummary(payment, newOrder, redirectUrl);
     }
 
@@ -106,7 +103,7 @@ public class OrderService {
     @Transactional
     public void receiveNotification(String orderHash, NotificationReceiveDto receiveDto) {
         Order order = getOrderByOrderHash(orderHash);
-        String status = paymentMethodP24.receiveNotification(receiveDto, order);
+        String status = paymentMethodP24.receiveNotification(order, receiveDto);
         if(status.equals("success")) {
             OrderStatus oldStatus = order.getOrderStatus();
             order.setOrderStatus(OrderStatus.PAID);
