@@ -96,7 +96,7 @@ public class PaymentMethodP24 {
                         config.isTestMode() ? config.getTestSecretKey() : config.getSecretKey()))
                 .baseUrl(config.isTestMode() ? config.getTestApiUrl() : config.getApiUrl())
                 .build();
-        ResponseEntity<TransactionVerifyResponse> result = webClient.put().uri("/transation/verify")
+        ResponseEntity<TransactionVerifyResponse> result = webClient.put().uri("/transaction/verify")
                 .bodyValue(TransactionVerifyRequest.builder()
                         .merchantId(config.getMerchantId())
                         .posId(config.getPosId())
