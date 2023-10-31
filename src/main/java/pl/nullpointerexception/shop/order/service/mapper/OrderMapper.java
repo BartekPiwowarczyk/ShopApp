@@ -1,5 +1,6 @@
 package pl.nullpointerexception.shop.order.service.mapper;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import pl.nullpointerexception.shop.common.model.Cart;
 import pl.nullpointerexception.shop.common.model.CartItem;
 import pl.nullpointerexception.shop.order.model.Order;
@@ -29,6 +30,7 @@ public class OrderMapper {
                 .grossValue(calculateGrossValue(cart.getItems(), shipment))
                 .payment(payment)
                 .userId(userId)
+                .orderHash(RandomStringUtils.randomAlphanumeric(12))
                 .build();
     }
 

@@ -2,25 +2,24 @@ package pl.nullpointerexception.shop.order.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import pl.nullpointerexception.shop.common.mail.EmailClientService;
 import pl.nullpointerexception.shop.common.model.Cart;
+import pl.nullpointerexception.shop.common.model.OrderStatus;
 import pl.nullpointerexception.shop.common.repository.CartItemRepository;
 import pl.nullpointerexception.shop.common.repository.CartRepository;
-import pl.nullpointerexception.shop.order.model.Order;
-import pl.nullpointerexception.shop.order.model.Payment;
-import pl.nullpointerexception.shop.order.model.PaymentType;
-import pl.nullpointerexception.shop.order.model.Shipment;
+import pl.nullpointerexception.shop.order.model.*;
+import pl.nullpointerexception.shop.order.model.dto.NotificationReceiveDto;
 import pl.nullpointerexception.shop.order.model.dto.OrderDto;
 import pl.nullpointerexception.shop.order.model.dto.OrderListDto;
 import pl.nullpointerexception.shop.order.model.dto.OrderSummary;
-import pl.nullpointerexception.shop.order.repository.OrderRepository;
-import pl.nullpointerexception.shop.order.repository.OrderRowRepository;
-import pl.nullpointerexception.shop.order.repository.PaymentRepository;
-import pl.nullpointerexception.shop.order.repository.ShipmentRepository;
+import pl.nullpointerexception.shop.order.repository.*;
 import pl.nullpointerexception.shop.order.service.payment.p24.PaymentMethodP24;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static pl.nullpointerexception.shop.order.service.mapper.OrderDtoMapper.mapToOrderListDto;
@@ -43,6 +42,8 @@ public class OrderService {
     private final PaymentRepository paymentRepository;
     private final EmailClientService emailClientService;
     private final PaymentMethodP24 paymentMethodP24;
+    private final OrderLogRepository orderLogRepository;
+
 
     @Transactional
     public OrderSummary placeOrder(OrderDto orderDto, Long userId) {
@@ -98,4 +99,23 @@ public class OrderService {
         return mapToOrderListDto(orderRepository.findByUserId(userId));
     }
 
+    public Order getOrderByOrderHash(String orderHash) {
+        return orderRepository.findByOrderHash(orderHash).orElseThrow();
+    }
+
+    @Transactional
+    public void receiveNotification(String orderHash, NotificationReceiveDto receiveDto) {
+        Order order = getOrderByOrderHash(orderHash);
+        String status = paymentMethodP24.receiveNotification(receiveDto, order);
+        if(status.equals("success")) {
+            OrderStatus oldStatus = order.getOrderStatus();
+            order.setOrderStatus(OrderStatus.PAID);
+            orderLogRepository.save(OrderLog.builder()
+                    .created(LocalDateTime.now())
+                    .orderId(order.getId())
+                    .note("Opłacono zamowienie przez Przelewy24, id płatności: " + receiveDto.getStatement() +
+                            ", zmieniono status z " + oldStatus + " na " + order.getOrderStatus().getValue())
+                    .build());
+        }
+    }
 }
