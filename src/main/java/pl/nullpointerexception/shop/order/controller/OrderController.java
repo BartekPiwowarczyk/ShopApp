@@ -1,6 +1,7 @@
 package pl.nullpointerexception.shop.order.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(("/orders"))
 @Validated
+@Slf4j
 public class OrderController {
 
     private final OrderService orderService;
@@ -55,6 +57,7 @@ public class OrderController {
     @PostMapping("/notification/{orderHash}")
     public void notificationReceive(@PathVariable @Length(max = 12) String orderHash,
                                     @RequestBody NotificationReceiveDto receiveDto) {
+        log.info("OrderController, method: notificationReceive, orderHash: " + orderHash + " , receiveDto: " + receiveDto);
         orderService.receiveNotification(orderHash, receiveDto);
     }
 }
