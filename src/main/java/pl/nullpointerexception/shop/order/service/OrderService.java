@@ -53,6 +53,7 @@ public class OrderService {
         clearOrderCart(orderDto);
         sendConfirmEmail(newOrder);
         String redirectUrl = initPaymentIfNeeded(newOrder);
+        log.info("RedirectUrl: " + redirectUrl);
         return createOrderSummary(payment, newOrder, redirectUrl);
     }
 
@@ -113,7 +114,7 @@ public class OrderService {
                     .created(LocalDateTime.now())
                     .orderId(order.getId())
                     .note("Opłacono zamowienie przez Przelewy24, id płatności: " + receiveDto.getStatement() +
-                            ", zmieniono status z " + oldStatus + " na " + order.getOrderStatus().getValue())
+                            ", zmieniono status z " + oldStatus.getValue() + " na " + order.getOrderStatus().getValue())
                     .build());
         }
     }

@@ -62,13 +62,17 @@ public class PaymentMethodP24 {
 
     private String generateStatusUrl(String orderHash) {
         String baseUrl = config.isTestMode() ? config.getTestUrlStatus() : config.getUrlStatus();
-        return baseUrl + "/orders/notification/" + orderHash;
+        String urlStatus = baseUrl + "/orders/notification/" + orderHash;
+        log.info("UrlStatus: " + urlStatus);
+        return urlStatus;
 
     }
 
     private String generateReturnUrl(String orderHash) {
         String baseUrl = config.isTestMode() ? config.getTestUrlReturn() : config.getUrlReturn();
-        return baseUrl + "/order/notification/" + orderHash;
+        String urlReturn = baseUrl + "/order/notification/" + orderHash;
+        log.info("UrlReturn: " + urlReturn);
+        return urlReturn;
     }
 
     private String createSign(Order newOrder) {
