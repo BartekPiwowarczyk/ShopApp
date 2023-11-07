@@ -13,5 +13,4 @@ public class TransactionVerifyRequest {
     private String currency;
     private Integer orderId;
     private String sign;
-
 }

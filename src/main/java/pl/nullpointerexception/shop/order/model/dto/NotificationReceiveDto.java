@@ -16,5 +16,4 @@ public class NotificationReceiveDto {
     private Integer methodId;
     private String statement;
     private String sign;
-
 }
