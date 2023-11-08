@@ -62,17 +62,13 @@ public class PaymentMethodP24 {
 
     private String generateStatusUrl(String orderHash) {
         String baseUrl = config.isTestMode() ? config.getTestUrlStatus() : config.getUrlStatus();
-        String urlStatus = baseUrl + "/orders/notification/" + orderHash;
-        log.info("UrlStatus: " + urlStatus);
-        return urlStatus;
+        return baseUrl + "/orders/notification/" + orderHash;
 
     }
 
     private String generateReturnUrl(String orderHash) {
         String baseUrl = config.isTestMode() ? config.getTestUrlReturn() : config.getUrlReturn();
-        String urlReturn = baseUrl + "/order/notification/" + orderHash;
-        log.info("UrlReturn: " + urlReturn);
-        return urlReturn;
+        return baseUrl + "/order/notification/" + orderHash;
     }
 
     private String createSign(Order newOrder) {
@@ -88,10 +84,17 @@ public class PaymentMethodP24 {
         return "order_id_" + newOrder.getId().toString();
     }
 
-    public String receiveNotification(Order order, NotificationReceiveDto receiveDto) {
+    public String receiveNotification(Order order, NotificationReceiveDto receiveDto, String remoteAddr) {
         log.info("Receive Dto: " + receiveDto.toString());
+        validateIpAddress(remoteAddr);
         validate(receiveDto,order);
         return verifyPayment(receiveDto,order);
+    }
+
+    private void validateIpAddress(String remoteAddr) {
+        if(!config.getServers().contains(remoteAddr)) {
+            throw new RuntimeException("Niepoprawny adres IP dla potwierdzenia płatności " + remoteAddr);
+        }
     }
 
     private String verifyPayment(NotificationReceiveDto receiveDto, Order order) {

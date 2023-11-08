@@ -14,6 +14,7 @@ import pl.nullpointerexception.shop.order.service.OrderService;
 import pl.nullpointerexception.shop.order.service.PaymentService;
 import pl.nullpointerexception.shop.order.service.ShipmentService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -56,8 +57,9 @@ public class OrderController {
 
     @PostMapping("/notification/{orderHash}")
     public void notificationReceive(@PathVariable @Length(max = 12) String orderHash,
-                                    @RequestBody NotificationReceiveDto receiveDto) {
+                                    @RequestBody NotificationReceiveDto receiveDto,
+                                    HttpServletRequest request) {
         log.info("OrderController, method: notificationReceive, orderHash: " + orderHash + " , receiveDto: " + receiveDto);
-        orderService.receiveNotification(orderHash, receiveDto);
+        orderService.receiveNotification(orderHash, receiveDto, request.getRemoteAddr());
     }
 }

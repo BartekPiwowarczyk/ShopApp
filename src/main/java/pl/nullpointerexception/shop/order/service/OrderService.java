@@ -53,7 +53,6 @@ public class OrderService {
         clearOrderCart(orderDto);
         sendConfirmEmail(newOrder);
         String redirectUrl = initPaymentIfNeeded(newOrder);
-        log.info("RedirectUrl: " + redirectUrl);
         return createOrderSummary(payment, newOrder, redirectUrl);
     }
 
@@ -102,11 +101,9 @@ public class OrderService {
     }
 
     @Transactional
-    public void receiveNotification(String orderHash, NotificationReceiveDto receiveDto) {
+    public void receiveNotification(String orderHash, NotificationReceiveDto receiveDto, String remoteAddr) {
         Order order = getOrderByOrderHash(orderHash);
-        log.info("Get Order by Hash" + order);
-        String status = paymentMethodP24.receiveNotification(order, receiveDto);
-        log.info("Status: " + status);
+        String status = paymentMethodP24.receiveNotification(order, receiveDto, remoteAddr);
         if(status.equals("success")) {
             OrderStatus oldStatus = order.getOrderStatus();
             order.setOrderStatus(OrderStatus.PAID);
