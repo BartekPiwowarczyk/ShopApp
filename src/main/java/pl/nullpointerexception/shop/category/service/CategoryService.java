@@ -37,6 +37,7 @@ public class CategoryService {
                         .description(product.getDescription())
                         .image(product.getImage())
                         .price(product.getPrice())
+                        .salePrice(product.getSalePrice())
                         .currency(product.getCurrency())
                         .slug(product.getSlug())
                         .build()).toList();
