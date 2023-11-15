@@ -1,14 +1,13 @@
 package pl.nullpointerexception.shop.common.model;
 
-
 public enum OrderStatus {
-    NEW("Nowe"),
-    PAID("Opłacone"),
-    PROCESSING("Przetwarzane"),
-    WAITING_FOR_DELIVERY("Czeka na dostawę"),
-    COMPLETED("Zrealizowane"),
-    CANCELED("Anulowane"),
-    REFUND("Zwrócone");
+    NEW("New"),
+    PAID("Paid"),
+    PROCESSING("Processing"),
+    WAITING_FOR_DELIVERY("Waitting for delivery"),
+    COMPLETED("Completed"),
+    CANCELED("Canceled"),
+    REFUND("Refund");
 
     private String value;
 

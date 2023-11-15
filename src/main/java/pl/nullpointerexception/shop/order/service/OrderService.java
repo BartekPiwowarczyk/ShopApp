@@ -66,7 +66,7 @@ public class OrderService {
     private void sendConfirmEmail(Order newOrder) {
         emailClientService.getInstance()
                 .send(newOrder.getEmail(),
-                        "Twoje zamwienie zostało przyjęte",
+                        "Your order has been accepted",
                         createEmailMessage(newOrder));
     }
 
@@ -110,8 +110,8 @@ public class OrderService {
             orderLogRepository.save(OrderLog.builder()
                     .created(LocalDateTime.now())
                     .orderId(order.getId())
-                    .note("Opłacono zamowienie przez Przelewy24, id płatności: " + receiveDto.getStatement() +
-                            ", zmieniono status z " + oldStatus.getValue() + " na " + order.getOrderStatus().getValue())
+                    .note("Order paid via Przelewy24, id: " + receiveDto.getStatement() +
+                            ", status changed from " + oldStatus.getValue() + " to " + order.getOrderStatus().getValue())
                     .build());
         }
     }

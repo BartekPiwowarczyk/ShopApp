@@ -6,12 +6,12 @@ import java.time.format.DateTimeFormatter;
 
 public class OrderEmailMessageMapper {
     public static String createEmailMessage(Order order) {
-        return "Twoje zamówienie o id: " + order.getId() +
-                "\nData złożenia: " + order.getPlaceDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
-                "\nWartość: " + order.getGrossValue() + " PLN" +
+        return "Your order with id:: " + order.getId() +
+                "\nDate: " + order.getPlaceDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) +
+                "\nValue: " + order.getGrossValue() + " EUR" +
                 "\n\n" +
-                "\nPłatność: " + order.getPayment().getName() +
+                "\nPayment: " + order.getPayment().getName() +
                 (order.getPayment().getNote() !=null ? "\n" + order.getPayment().getNote() : "") +
-                "\n\nDziękujemy za zakupy.";
+                "\n\nThank you for shopping.";
     }
 }

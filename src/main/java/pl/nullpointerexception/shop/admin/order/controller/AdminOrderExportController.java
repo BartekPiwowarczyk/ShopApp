@@ -80,7 +80,7 @@ public class AdminOrderExportController {
             printer.flush();
             return new ByteArrayInputStream(stream.toByteArray());
         } catch (IOException e) {
-            throw new RuntimeException("Błąd przetwarzania CSV: " + e.getMessage());
+            throw new RuntimeException("CSV error: " + e.getMessage());
         }
     }
 }

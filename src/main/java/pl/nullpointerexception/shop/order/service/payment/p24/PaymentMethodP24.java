@@ -2,17 +2,14 @@ package pl.nullpointerexception.shop.order.service.payment.p24;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
 import pl.nullpointerexception.shop.order.model.Order;
 import pl.nullpointerexception.shop.order.model.dto.NotificationReceiveDto;
 import reactor.core.publisher.Mono;
 
-import java.math.BigDecimal;
 
 import static pl.nullpointerexception.shop.order.service.payment.p24.RequestUtil.*;
 
@@ -25,14 +22,14 @@ public class PaymentMethodP24 {
     private final WebClient p24Client;
 
     public String initPayment(Order newOrder) {
-        log.info("Inicjalizacja płatności");
+        log.info("Payment initiation");
 
         ResponseEntity<TransactionRegisterResponse> result = p24Client.post().uri("/transaction/register")
                 .bodyValue(createRegisterRequest(config, newOrder))
                 .retrieve()
                 .onStatus(HttpStatus::is4xxClientError,
                         clientResponse -> {
-                            log.error("Coś poszło źle: " + clientResponse.statusCode().name());
+                            log.error("Something went wrong: " + clientResponse.statusCode().name());
                             return Mono.empty();
                         })
                 .toEntity(TransactionRegisterResponse.class)
@@ -58,7 +55,7 @@ public class PaymentMethodP24 {
                 .retrieve()
                 .toEntity(TransactionVerifyResponse.class)
                 .block();
-        log.info("Weryfikacja transakcji status: " + result.getBody().getData().status());
+        log.info("Transaction verification status: " + result.getBody().getData().status());
         return result.getBody().getData().status();
     }
 }

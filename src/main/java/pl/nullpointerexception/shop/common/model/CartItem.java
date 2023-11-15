@@ -1,7 +1,6 @@
 package pl.nullpointerexception.shop.common.model;
 
 import lombok.*;
-import pl.nullpointerexception.shop.common.model.Product;
 
 import javax.persistence.*;
 

@@ -1,6 +1,5 @@
 package pl.nullpointerexception.shop.admin.category.controller;
 
-import com.github.slugify.Slugify;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.nullpointerexception.shop.admin.category.controller.dto.AdminCategoryDto;

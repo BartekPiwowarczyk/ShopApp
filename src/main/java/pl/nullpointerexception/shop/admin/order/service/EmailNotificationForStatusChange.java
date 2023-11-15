@@ -16,15 +16,15 @@ class EmailNotificationForStatusChange {
     void sendEmailNotification(OrderStatus newStatus, AdminOrder adminOrder) {
         if(newStatus == OrderStatus.PROCESSING) {
             sendEmail(adminOrder.getEmail(),
-                    "Zamówienie " + adminOrder.getId() + " zmieniło status na: " + newStatus.getValue(),
+                    "Order " + adminOrder.getId() + " changed status to: " + newStatus.getValue(),
                     createProcessingEmailMessage(adminOrder.getId(), newStatus));
         }else if (newStatus == OrderStatus.COMPLETED) {
             sendEmail(adminOrder.getEmail(),
-                    "Zamówienie " + adminOrder.getId() + " zostało zrealizowane",
+                    "Order " + adminOrder.getId() + " has been completed",
                     createCompletedEmailMessage(adminOrder.getId(), newStatus));
         } else if ((newStatus == OrderStatus.REFUND)) {
             sendEmail(adminOrder.getEmail(),
-                    "Zamówienie " + adminOrder.getId() + " zostało zwrócone",
+                    "Order " + adminOrder.getId() + " has been returned",
                     createRefundEmailMessage(adminOrder.getId(), newStatus));
         }
     }

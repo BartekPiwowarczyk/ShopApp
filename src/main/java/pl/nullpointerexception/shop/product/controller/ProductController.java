@@ -23,7 +23,6 @@ import java.util.List;
 @Validated
 public class ProductController {
 
-
     private final ProductService productService;
 
     @GetMapping("/products")

@@ -1,6 +1,7 @@
 package pl.nullpointerexception.shop.admin.review.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.web.bind.annotation.*;
 import pl.nullpointerexception.shop.admin.review.model.AdminReview;
 import pl.nullpointerexception.shop.admin.review.service.AdminReviewService;

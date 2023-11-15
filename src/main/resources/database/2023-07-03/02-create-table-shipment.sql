@@ -8,5 +8,5 @@ create table shipment(
     default_shipment boolean default false
 );
 
-insert into shipment(name, price, type, default_shipment) values ('kurier', 14.99, 'DELIVERYMAN',true);
-insert into shipment(name, price, type, default_shipment) values ('Odbiór osobisty', 0.0, 'SELFPICKUP',false);
+insert into shipment(name, price, type, default_shipment) values ('Delivery man', 15, 'DELIVERYMAN',true);
+insert into shipment(name, price, type, default_shipment) values ('Self pickup', 0.0, 'SELFPICKUP',false);

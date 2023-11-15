@@ -27,7 +27,7 @@ public class CartCleanupService {
         List<Long> ids = carts.stream()
                         .map(Cart::getId)
                         .toList();
-        log.info("Stare koszyki " + carts.size());
+        log.info("Old carts " + carts.size());
         if(!ids.isEmpty()) {
             cartItemRepository.deleteAllByCartIdIn(ids);
             cartRepository.deleteAllByIdIn(ids);

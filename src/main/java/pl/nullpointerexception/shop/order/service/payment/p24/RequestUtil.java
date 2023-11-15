@@ -13,12 +13,12 @@ public class RequestUtil {
                 .posId(config.getPosId())
                 .sessionId(createSessionId(newOrder))
                 .amount(newOrder.getGrossValue().movePointRight(2).intValue())
-                .currency("PLN")
-                .description("Zamówienie o id: " + newOrder.getId())
+                .currency("EUR")
+                .description("Order with id: " + newOrder.getId())
                 .email(newOrder.getEmail())
                 .client(newOrder.getFirstname() + " " + newOrder.getLastname())
-                .country("PL")
-                .language("pl")
+                .country("EN")
+                .language("en")
                 .urlReturn(generateReturnUrl(newOrder.getOrderHash(), config))
                 .urlStatus(generateStatusUrl(newOrder.getOrderHash(), config))
                 .sign(createSign(newOrder, config))
@@ -32,7 +32,7 @@ public class RequestUtil {
                 .posId(config.getPosId())
                 .sessionId(createSessionId(order))
                 .amount(order.getGrossValue().movePointRight(2).intValue())
-                .currency("PLN")
+                .currency("EUR")
                 .orderId(receiveDto.getOrderId())
                 .sign(createVerifySign(receiveDto, order, config))
                 .build();
@@ -40,7 +40,7 @@ public class RequestUtil {
 
     public static void validateIpAddress(String remoteAddr, PaymentMethodP24Config config) {
         if(!config.getServers().contains(remoteAddr)) {
-            throw new RuntimeException("Niepoprawny adres IP dla potwierdzenia płatności " + remoteAddr);
+            throw new RuntimeException("Incorrect IP address for payment confirmation " + remoteAddr);
         }
     }
 
@@ -50,7 +50,7 @@ public class RequestUtil {
         validateField(createSessionId(order).equals(receiveDto.getSessionId()));
         validateField(order.getGrossValue().compareTo(BigDecimal.valueOf(receiveDto.getAmount()).movePointLeft(2)) == 0);
         validateField(order.getGrossValue().compareTo(BigDecimal.valueOf(receiveDto.getOriginAmount()).movePointLeft(2)) == 0);
-        validateField("PLN".equals(receiveDto.getCurrency()));
+        validateField("EUR".equals(receiveDto.getCurrency()));
         validateField(createReceivedSign(receiveDto, order, config).equals(receiveDto.getSign()));
     }
 
@@ -60,7 +60,7 @@ public class RequestUtil {
                 ",\"sessionId\":\"" + createSessionId(order) +
                 "\",\"amount\":" + order.getGrossValue().movePointRight(2).intValue() +
                 ",\"originAmount\":" + order.getGrossValue().movePointRight(2).intValue() +
-                ",\"currency\":\"PLN\"" +
+                ",\"currency\":\"EUR\"" +
                 ",\"orderId\":" + receiveDto.getOrderId() +
                 ",\"methodId\":" + receiveDto.getMethodId() +
                 ",\"statement\":\"" + receiveDto.getStatement() +
@@ -70,7 +70,7 @@ public class RequestUtil {
 
     private static void validateField(boolean condition) {
         if (!condition) {
-            throw new RuntimeException("Walidacja niepoprawna");
+            throw new RuntimeException("Validation incorrect");
         }
     }
 
@@ -88,7 +88,7 @@ public class RequestUtil {
         String json = "{\"sessionId\":\"" + createSessionId(newOrder) +
                 "\",\"merchantId\":" + config.getMerchantId() +
                 ",\"amount\":" + newOrder.getGrossValue().movePointRight(2).intValue() +
-                ",\"currency\":\"" + "PLN" +
+                ",\"currency\":\"" + "EUR" +
                 "\",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
         return DigestUtils.sha384Hex(json);
     }
@@ -100,7 +100,7 @@ public class RequestUtil {
         String json = "{\"sessionId\":\"" + createSessionId(order) +
                 "\",\"orderId\":" + receiveDto.getOrderId() +
                 ",\"amount\":" + order.getGrossValue().movePointRight(2).intValue() +
-                ",\"currency\":\"PLN\",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
+                ",\"currency\":\"EUR\",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
         return DigestUtils.sha384Hex(json);
     }
 }

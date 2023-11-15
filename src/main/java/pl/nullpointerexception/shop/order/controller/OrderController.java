@@ -44,7 +44,7 @@ public class OrderController {
     @GetMapping
     public List<OrderListDto> getOrders(@AuthenticationPrincipal Long userId) {
         if(userId == null) {
-            throw new IllegalArgumentException("Brak użytkownika");
+            throw new IllegalArgumentException("User doesn't exist");
         }
         return orderService.getOrdersForCustomer(userId);
     }
@@ -59,7 +59,6 @@ public class OrderController {
     public void notificationReceive(@PathVariable @Length(max = 12) String orderHash,
                                     @RequestBody NotificationReceiveDto receiveDto,
                                     HttpServletRequest request) {
-        log.info("OrderController, method: notificationReceive, orderHash: " + orderHash + " , receiveDto: " + receiveDto);
         orderService.receiveNotification(orderHash, receiveDto, request.getRemoteAddr());
     }
 }

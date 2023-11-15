@@ -22,7 +22,7 @@ public class DefaultErrorHandling {
                 new Date(),
                 HttpStatus.NOT_FOUND.value(),
                 HttpStatus.NOT_FOUND.getReasonPhrase(),
-                "Zasób nie istnieje",
+                "The resource doesn't exist",
                 request.getRequestURI()
         ));
     }

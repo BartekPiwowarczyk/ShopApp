@@ -9,7 +9,6 @@ import pl.nullpointerexception.shop.common.model.Review;
 import pl.nullpointerexception.shop.review.service.ReviewService;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

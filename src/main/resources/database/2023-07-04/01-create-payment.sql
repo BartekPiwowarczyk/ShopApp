@@ -8,4 +8,4 @@ create table payment(
                         note text
 );
 insert into payment(name, type, default_payment, note)
-values ('Przelew bankowy', 'BANK_TRANSFER', true, 'Prosimy o dokonanie przelewu na konto:\n30 1030 1739 5825 1518 9904 4499\n w tytule proszę podać nr zamówienia');
+values ('Bank transfer', 'BANK_TRANSFER', true, 'Please make a transfer to account:\n30 1030 1739 5825 1518 9904 4499\n please provide the order number in the title');

@@ -12,11 +12,11 @@ class SlugifyUtilsTest {
             "test test.png, test-test.png",
             "hello world.jpg, hello-world.jpg",
             "ąęśćżźńół.png, aesczznol.png",
-            "Produkt 1.png, produkt-1.png",
-            "PRODUKT_2.jpg, produkt-2.jpg",
+            "Product 1.png, product-1.png",
+            "PRODUCT_2.jpg, product-2.jpg",
             "Pr@d@!#$ !..jpg, pr-d.jpg",
-            "Produkt    1.png, produkt-1.png",
-            "Produkt - 1.png, produkt-1.png",
+            "Product    1.png, product-1.png",
+            "Product - 1.png, product-1.png",
     })
     void shouldSlugifyFileName(String in, String out) {
         String fileName = SlugifyUtils.slugifyFileName(in);

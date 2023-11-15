@@ -1,6 +1,5 @@
 package pl.nullpointerexception.shop.order.model;
 
-import liquibase.pro.packaged.G;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

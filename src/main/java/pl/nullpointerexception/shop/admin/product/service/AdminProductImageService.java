@@ -27,7 +27,7 @@ public class AdminProductImageService {
         try (OutputStream outputStream = Files.newOutputStream(filePath);) {
             inputStream.transferTo(outputStream);
         } catch (IOException e) {
-            throw new RuntimeException("Nie mogę zapisać pliku", e);
+            throw new RuntimeException("I can't save the file", e);
         }
         return newFileName;
     }

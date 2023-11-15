@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,10 +52,10 @@ public class LoginController {
     @PostMapping("/register")
     public Token register(@RequestBody @Valid RegisterCredentials registerCredentials) {
         if(!registerCredentials.getPassword().equals(registerCredentials.getRepeatPassword())) {
-            throw new RegisterException("Hasła nie sa identyczne");
+            throw new RegisterException("The passwords are not the same");
         }
         if (userRepository.existsByUsername(registerCredentials.getUsername())) {
-            throw new RegisterException("Taki użytkownik już istnieje");
+            throw new RegisterException("This user doesn't exist");
         }
 
         userRepository.save(User.builder()
