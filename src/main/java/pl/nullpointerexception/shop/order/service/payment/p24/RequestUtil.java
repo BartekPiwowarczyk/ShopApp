@@ -1,14 +1,16 @@
 package pl.nullpointerexception.shop.order.service.payment.p24;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import pl.nullpointerexception.shop.order.model.Order;
 import pl.nullpointerexception.shop.order.model.dto.NotificationReceiveDto;
 
 import java.math.BigDecimal;
 
+@Slf4j
 public class RequestUtil {
     public static TransactionRegisterRequest createRegisterRequest(PaymentMethodP24Config config, Order newOrder) {
-        return TransactionRegisterRequest.builder()
+        TransactionRegisterRequest result = TransactionRegisterRequest.builder()
                 .merchantId(config.getMerchantId())
                 .posId(config.getPosId())
                 .sessionId(createSessionId(newOrder))
@@ -17,13 +19,15 @@ public class RequestUtil {
                 .description("Order with id: " + newOrder.getId())
                 .email(newOrder.getEmail())
                 .client(newOrder.getFirstname() + " " + newOrder.getLastname())
-                .country("EN")
-                .language("en")
+                .country("PL")
+                .language("pl")
                 .urlReturn(generateReturnUrl(newOrder.getOrderHash(), config))
                 .urlStatus(generateStatusUrl(newOrder.getOrderHash(), config))
                 .sign(createSign(newOrder, config))
                 .encoding("UTF-8")
                 .build();
+        log.info("Register Request: " + result);
+        return result;
     }
 
     public static TransactionVerifyRequest createVerifyRequest(PaymentMethodP24Config config, Order order, NotificationReceiveDto receiveDto) {
