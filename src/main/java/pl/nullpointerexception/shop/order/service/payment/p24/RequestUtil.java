@@ -15,7 +15,7 @@ public class RequestUtil {
                 .posId(config.getPosId())
                 .sessionId(createSessionId(newOrder))
                 .amount(newOrder.getGrossValue().movePointRight(2).intValue())
-                .currency("EUR")
+                .currency("PLN")
                 .description("Order with id: " + newOrder.getId())
                 .email(newOrder.getEmail())
                 .client(newOrder.getFirstname() + " " + newOrder.getLastname())
@@ -36,7 +36,7 @@ public class RequestUtil {
                 .posId(config.getPosId())
                 .sessionId(createSessionId(order))
                 .amount(order.getGrossValue().movePointRight(2).intValue())
-                .currency("EUR")
+                .currency("PLN")
                 .orderId(receiveDto.getOrderId())
                 .sign(createVerifySign(receiveDto, order, config))
                 .build();
@@ -54,7 +54,7 @@ public class RequestUtil {
         validateField(createSessionId(order).equals(receiveDto.getSessionId()));
         validateField(order.getGrossValue().compareTo(BigDecimal.valueOf(receiveDto.getAmount()).movePointLeft(2)) == 0);
         validateField(order.getGrossValue().compareTo(BigDecimal.valueOf(receiveDto.getOriginAmount()).movePointLeft(2)) == 0);
-        validateField("EUR".equals(receiveDto.getCurrency()));
+        validateField("PLN".equals(receiveDto.getCurrency()));
         validateField(createReceivedSign(receiveDto, order, config).equals(receiveDto.getSign()));
     }
 
@@ -64,7 +64,7 @@ public class RequestUtil {
                 ",\"sessionId\":\"" + createSessionId(order) +
                 "\",\"amount\":" + order.getGrossValue().movePointRight(2).intValue() +
                 ",\"originAmount\":" + order.getGrossValue().movePointRight(2).intValue() +
-                ",\"currency\":\"EUR\"" +
+                ",\"currency\":\"PLN\"" +
                 ",\"orderId\":" + receiveDto.getOrderId() +
                 ",\"methodId\":" + receiveDto.getMethodId() +
                 ",\"statement\":\"" + receiveDto.getStatement() +
@@ -92,7 +92,7 @@ public class RequestUtil {
         String json = "{\"sessionId\":\"" + createSessionId(newOrder) +
                 "\",\"merchantId\":" + config.getMerchantId() +
                 ",\"amount\":" + newOrder.getGrossValue().movePointRight(2).intValue() +
-                ",\"currency\":\"" + "EUR" +
+                ",\"currency\":\"" + "PLN" +
                 "\",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
         return DigestUtils.sha384Hex(json);
     }
@@ -104,7 +104,7 @@ public class RequestUtil {
         String json = "{\"sessionId\":\"" + createSessionId(order) +
                 "\",\"orderId\":" + receiveDto.getOrderId() +
                 ",\"amount\":" + order.getGrossValue().movePointRight(2).intValue() +
-                ",\"currency\":\"EUR\",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
+                ",\"currency\":\"PLN\",\"crc\":\"" + (config.isTestMode() ? config.getTestCrc() : config.getCrc()) + "\"}";
         return DigestUtils.sha384Hex(json);
     }
 }
