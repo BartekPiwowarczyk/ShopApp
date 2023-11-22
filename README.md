@@ -68,34 +68,35 @@ Only with this option, you can use the Przelewy24 payment gateway, which uses an
 List of example important endpoints:
 
 Authorization
-* [POST /register](###POST/register)
-* [POST /login](###POST/login)
+* [POST /register](#post-register)
+* [POST /login](#post-login)
 
 Categories
-* [GET /admin/categories](###GET/admin/categories)
-* [POST /admin/categories](###POST/admin/categories)
+* [GET /admin/categories](#get-admin-categories)
+* [POST /admin/categories](#post-admin-categories)
 
 Products
-* [POST /admin/products](###POST/admin/products)
-* [GET /products/{slug}](###GET/products/{slug})
-* [PUT /admin/products/{id}](###PUT/admin/products/{id})
-* [DELETE /admin/products/{id}](###DELETE/admin/products/{id})
+* [POST /admin/products](#post-admin-products)
+* [GET /products/{slug}](#get-products-slug)
+* [PUT /admin/products/{id}](#put-admin-products-id)
+* [DELETE /admin/products/{id}](#delete-admin-products-id)
 
 Carts
-* [PUT /carts/{id}](###PUT/carts/{id})
+* [PUT /carts/{id}](#put-carts-id)
 
 Orders
-* [POST /orders](###POST/orders)
-* [GET /orders](###GET/orders)
+* [POST /orders](#post-orders)
+* [GET /orders](#get-orders)
 
 Reviews
-* [POST /reviews](###POST/reviews)
-* [PUT /admin/reviews/{id}/moderate](###PUT/admin/reviews/{id}/moderate)
+* [POST /reviews](#post-reviews)
+* [PUT /admin/reviews/{id}/moderate](#put-admin-reviews-id-moderate)
+* [GET /admin/reviews](#get-admin-reviews)
 
 
 
 
-### POST/register
+### POST Register
 
 You can add new user to database. This user don't have access to admin endpoints.
 
@@ -110,7 +111,7 @@ JSON:
 ```
 <img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_register.png" width="500" heigt="700"/>
 
-### POST/login
+### POST Login
 
 You can log in to a account created by you or to the admin account. Response body is token with you need if you want use admin endpoints in header: Authorization
 ```shell
@@ -121,9 +122,9 @@ JSON:
 "password":"test"
 }
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_login.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_login.png" width="500" heigt="700"/>
 
-### GET/admin/categories
+### GET Admin Categories
 
 This endpoint uses authorization and return all categories 
 
@@ -132,10 +133,10 @@ GET baseUrl/admin/categories
 HEADERS:
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzAzMTUyMTk4fQ.GjNbRyZ5bfTPCG9MmUTMysxZ7uWYfmSmAM51C2MdySg
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_get_categories.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_get_categories.png" width="500" heigt="700"/>
 
 
-### POST/admin/categories
+### POST Admin Categories
 
 This endpoint uses authorization and add new category
 
@@ -150,9 +151,9 @@ JSON:
   "slug": "school"
 }
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_post_categories.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_post_categories.png" width="500" heigt="700"/>
 
-### POST/admin/products
+### POST Admin Products
 
 This endpoint uses authorization and add new product. Firstly, you need to have any category in the database
 
@@ -173,9 +174,9 @@ JSON:
   "slug": "red  pen"
 }
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_post_products.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_post_products.png" width="500" heigt="700"/>
 
-### GET/products/{slug}
+### GET Products {slug}
 
 This endpoint returns detailed information about a product in the database using a specially prepared `slug` prefix.
 To use it, you need to have a product in the database and know the slug (you can use the previous endpoint for testing).
@@ -183,9 +184,9 @@ To use it, you need to have a product in the database and know the slug (you can
 ```shell
 GET baseUrl/products/red-pen
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_get_products_slug.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_get_products_slug.png" width="500" heigt="700"/>
 
-### PUT/admin/products/{id}
+### PUT Admin Products {id}
 
 This endpoint uses authorization and edit product. Firstly, you need to have any product in the database
 In this example I change price and description. 
@@ -207,10 +208,10 @@ JSON:
   "slug": "red-pen"
 }
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_put_products_id.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_put_products_id.png" width="500" heigt="700"/>
 
 
-### DELETE/admin/products/{id}
+### DELETE Admin Products {id}
 
 This endpoint uses authorization and delete product. Firstly, you need to have any product in the database
 
@@ -219,10 +220,10 @@ DELETE baseUrl/admin/products/3
 HEADERS:
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzAzMTUyMTk4fQ.GjNbRyZ5bfTPCG9MmUTMysxZ7uWYfmSmAM51C2MdySg
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_delete_products_id.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_delete_products_id.png" width="500" heigt="700"/>
 
 
-### PUT/carts/{id}
+### PUT Carts {id}
 
 This endpoint adds a product to an existing cart or creates a new cart and then add the product (always increments the quantity by 1). Firstly, you need to have any product in the database
 
@@ -235,9 +236,9 @@ JSON:
   "quantity": 1
 }
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_put_carts_id.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_put_carts_id.png" width="500" heigt="700"/>
 
-### POST/orders
+### POST Orders
 
 This endpoint add order to database.Firstly, you need to have any cart, payment method and shipment method in the database.
 I added basic payment options (bank transfer, Przelewy24 payment gateway) and basic delivery options (delivery man, self pickup).
@@ -268,9 +269,9 @@ JSON:
   "paymentId": 1
 }
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_orders.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_orders.png" width="500" heigt="700"/>
 
-### GET/orders
+### GET Orders
 
 
 This endpoint show all example user orders.
@@ -282,7 +283,49 @@ GET baseUrl/orders
 HEADERS:
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzAzMTY2MzE4fQ.hBMzjl5DNK-PpvSl-P6SKP9nupvNb-Qkevwze3hEPgU
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/screenshots/postman_get_orders.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_get_orders.png" width="500" heigt="700"/>
+
+
+### POST Reviews
+
+This endpoint add review with must be accepted by admin.
+
+```shell
+POST baseUrl/reviews
+JSON:
+{
+  "authorName": "Jan",
+  "content": "Beautiful pen",
+  "productId": 4
+}
+```
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_post_reviews.png" width="500" heigt="700"/>
+
+
+### PUT Admin Reviews {id} Moderate
+
+This endpoint uses authorization and accept review by admin. When review is accepted, then it is shown to users. Change moderate: true
+
+```shell
+PUT baseUrl/admin/reviews/1/moderate
+HEADERS:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzAzMTY2MzE4fQ.hBMzjl5DNK-PpvSl-P6SKP9nupvNb-Qkevwze3hEPgU
+
+```
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_put_admin_reviews_id_moderate.png" width="500" heigt="700"/>
+
+
+### GET Admin Reviews
+
+This endpoint uses authorization and show all reviews.
+
+```shell
+GET baseUrl/admin/reviews
+HEADERS:
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNzAzMTY2MzE4fQ.hBMzjl5DNK-PpvSl-P6SKP9nupvNb-Qkevwze3hEPgU
+```
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_get_admin_reviews.png" width="500" heigt="700"/>
+
 
 ---
 [^1]: This option sets the mail-sending service to use a demo mode after placing an order, allowing the sent message to be visible in the application logs.
