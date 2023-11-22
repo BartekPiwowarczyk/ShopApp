@@ -108,7 +108,7 @@ JSON:
 "repeatPassword":"password12",
 }
 ```
-<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_register.PNG" width="500" heigt="700"/>
+<img src="https://github.com/BartekPiwowarczyk/ShopApp/blob/master/screenshots/postman_register.png" width="500" heigt="700"/>
 
 ### POST/login
 
